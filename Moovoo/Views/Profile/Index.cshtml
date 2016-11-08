@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_MovieLayout.cshtml";
+}
+
+<div class="blog-post-author">
+    <div class="wrapper">
+        <div class="file-upload">
+            <input type="file" />
+            <i class="fa fa-arrow-up"></i>
+        </div>
+    </div>
+    <div class="blog-post-author-details">Upload <span class="author-name">Profile Photo</span><br /> </div>
+</div>
+<article class="blog-post">
+    <div class="blog-post-content">
+        <center>
+
+            <h1>USER NAME</h1>
+            <img src="" alt="Blog post 1">
+            <ul class="blog-post-categories">
+            </ul>
+        </center>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form role="form" data-form="contact-form">
+                    <fieldset class="form-group">
+                        <label for="name">Name</label>
+                        <input id="name" name="name" type="text" placeholder="Name" required>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="Email" required>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Message" required></textarea>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <button class="btn" type="submit">Send</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+     
+    </div>
+
+    <div class="blog-post-meta text-center">
+        <a href="#"><h4>Sync Your Facebook Account</h4></a>
+        <div class="share">
+            <span class='st_fblike_hcount' displayText='Facebook Like'></span>
+            <span class='st_facebook_hcount' displayText='Facebook'></span>
+            <span class='st_twitter_hcount' displayText='Tweet'></span>
+            <span class='st_pinterest_hcount' displayText='Pinterest'></span>
+            <span class='st_linkedin_hcount' displayText='LinkedIn'></span>
+        </div>
+
+
+    </div>
+
+</article>
+

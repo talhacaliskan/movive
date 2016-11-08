@@ -1,0 +1,32 @@
+﻿@model List<TMDbLib.Objects.Movies.Movie>
+
+@foreach (var item in Model)
+{
+    if (item.PosterPath == null)
+    {
+        item.PosterPath = "../../Content/images/cover.jpg";
+
+    }
+    else
+    {
+        item.PosterPath = "https://image.tmdb.org/t/p/w500/" + item.PosterPath;
+    }
+
+    <div class="col-md-12 col-xs-12">
+        <article class="blog-posts">
+            <header style="padding:3%">
+                <h4><b>Release Date : </b> @String.Format("{0:dd MMMM yyyy dddd}", item.ReleaseDate)</h4>
+                <a class="blog-post-image" href="../../../../Movie/Movie/@item.Id">
+                    <img src="@item.PosterPath" height="100%" class="img-rounded" width="100%" alt="Blog post 1">
+                </a>
+
+                <h2 class="blog-post-title">
+                    @Html.ActionLink(item.OriginalTitle, "Movie", "Movie", new { id = item.Id }, null)
+                </h2>
+            </header>
+            <p class="blog-post-content">@item.Overview</p>
+
+        </article>
+    </div>
+}
+

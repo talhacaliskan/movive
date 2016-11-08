@@ -1,0 +1,28 @@
+﻿@using TMDbLib.Objects.General
+@model List<MovieResult>
+@{
+    ViewBag.Title = "More Recommended";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12" style="background-color:white">
+    <h1>Recommended</h1>
+    <div class="col-lg-12">
+        @foreach (var item in Model)
+        {
+
+            <div class="col-md-4">
+
+
+                <h4>
+                    @Html.ActionLink(item.OriginalTitle, "Movie", "Movie", new { id = item.Id }, null)
+                </h4>
+
+                <a href="../../../../Movie/Movie/@item.Id">
+                    <img src="https://image.tmdb.org/t/p/w500/@item.PosterPath" class="img-rounded" height="100%" width="100%" alt="Alternate Text" />
+                </a>
+            </div>
+        }
+    </div>
+</div>
+

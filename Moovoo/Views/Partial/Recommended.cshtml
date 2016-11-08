@@ -1,0 +1,26 @@
+﻿@using TMDbLib.Objects.General
+@model List<MovieResult>
+
+
+@foreach (var item in Model)
+            {
+
+    <div class="col-md-3">
+        <h4>
+            @Html.ActionLink(item.OriginalTitle, "Movie", "Movie", new { id = item.Id }, null)
+        </h4>
+
+        <a href="../../../../Movie/Movie/@item.Id"><img src="https://image.tmdb.org/t/p/w500/@item.PosterPath" class="img-rounded" height="100%" width="100%" alt="Alternate Text" /></a>
+    </div>
+}
+    </div>
+<br />
+</div>
+
+
+
+
+
+
+
+

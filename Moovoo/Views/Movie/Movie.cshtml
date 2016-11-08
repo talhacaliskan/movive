@@ -1,0 +1,86 @@
+﻿@using TMDbLib.Objects.Movies;
+@model Movie
+@{
+    ViewBag.Title = "Movie";
+    Layout = "~/Views/Shared/_MovieLayout.cshtml";
+
+}
+@if (Model.PosterPath == null)
+{
+    Model.PosterPath = "../../Content/images/cover.jpg";
+
+}
+else
+{
+    Model.PosterPath = "https://image.tmdb.org/t/p/w500/" + Model.PosterPath;
+}
+
+    <article class="blog-post">
+        <div class="blog-post-content">
+            <center>
+                
+                <h1>@Model.OriginalTitle</h1>
+                <img src="@Model.PosterPath" alt="Blog post 1">
+                <ul class="blog-post-categories">
+                    @foreach (var item in Model.Genres)
+                    {
+                        <li><a href="#">@item.Name</a></li>
+                    }
+
+                </ul>
+            </center>
+            
+            <h4>All Along the Watchtower</h4>
+            <p>@Model.Overview<p>
+                @*<blockquote class="style-2 overlap">“When I design buildings, I think of the overall composition, much as the parts of a body would fit together. On top of that, I think about how people will approach the building and experience that space.”</blockquote>*@
+                <div class="video-wrapper">
+
+                    @foreach (var item in Model.Videos.Results)
+                    {
+
+                        <iframe width="100%" height="100%" frameborder="0"
+                                src="https://www.youtube.com/embed/@item.Key"></iframe>
+
+                    }
+                </div>
+                <blockquote>Rump pork chop flank shoulder beef ribs turkey fatback filet mignon beef capicola. Bacon beef hamburger tongue, porchetta short ribs swine fatback spare ribs frankfurter pastrami ham hock pork. Porchetta kielbasa corned beef pastrami shankle flank pancetta pork chop andouille tenderloin meatball sausage biltong jowl short ribs. Short ribs shank doner bacon corned beef, jowl prosciutto chicken frankfurter ham hock turkey hamburger pork loin pancetta boudin. leberkas corned beef. Tongue pastrami turducken shank filet mignon.</blockquote>
+            <p style="clear:both">
+                @foreach (var item in Model.Credits.Cast.Take(15))
+                {
+                    @item.Name <b>@item.Character</b>
+                }
+            </p>
+        </div>
+
+        <div class="blog-post-meta text-center">
+            <a href="#"><h4>Share on my Profile</h4></a>
+            <div class="share">
+                <span class='st_fblike_hcount' displayText='Facebook Like'></span>
+                <span class='st_facebook_hcount' displayText='Facebook'></span>
+                <span class='st_twitter_hcount' displayText='Tweet'></span>
+                <span class='st_pinterest_hcount' displayText='Pinterest'></span>
+                <span class='st_linkedin_hcount' displayText='LinkedIn'></span>
+            </div>
+
+            
+        </div>
+        
+    </article>
+  
+        
+            @foreach (var item in Model.Similar.Results.Take(6))
+            {
+
+                <div class="col-md-3">
+                    <h4>
+                        @Html.ActionLink(item.OriginalTitle, "Movie", "Movie", new { id = item.Id }, null)
+                    </h4>
+                    <a href="../../../../Movie/Movie/@item.Id"><img src="https://image.tmdb.org/t/p/w500/@item.PosterPath" class="img-rounded" height="100%" width="100%" alt="Alternate Text" /></a>
+                </div>
+            }
+
+           
+       
+   
+@{Html.RenderAction("Recommended", "Partial"); }
+@Html.ActionLink("More", "MoreRecommended", "Movie", new { id = Model.Id }, new { @class = "blog-more" })

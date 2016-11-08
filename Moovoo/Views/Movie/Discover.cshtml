@@ -1,0 +1,35 @@
+﻿@using TMDbLib.Objects.Movies;
+@using TMDbLib.Objects.Search;
+@model List<Movie>
+@{
+    ViewBag.Title = "Discover";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (var item in Model)
+{
+    if (item.PosterPath == null)
+    {
+        item.PosterPath = "../../Content/images/cover.jpg";
+
+    }
+    else
+    {
+        item.PosterPath = "https://image.tmdb.org/t/p/w500/" + item.PosterPath;
+    }
+    <div class="col-md-4 col-xs-6">
+        <article class="blog-posts">
+            <header>
+                <a class="blog-post-image" href="blog-post.html">
+                    <img src="@item.PosterPath" height="100%" width="100%" alt="Blog post 1">
+                </a>
+
+                <h2 class="blog-post-title">
+                    @Html.ActionLink(item.OriginalTitle, "Movie", "Movie", new { id = item.Id }, null)
+                </h2>
+            </header>
+            <p class="blog-post-content">@item.Overview</p>
+
+        </article>
+    </div>
+}
