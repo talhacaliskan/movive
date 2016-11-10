@@ -24,6 +24,7 @@ else
                 <ul class="blog-post-categories">
                     @foreach (var item in Model.Genres)
                     {
+
                         <li><a href="#">@item.Name</a></li>
                     }
 
@@ -45,9 +46,9 @@ else
                 </div>
                 <blockquote>Rump pork chop flank shoulder beef ribs turkey fatback filet mignon beef capicola. Bacon beef hamburger tongue, porchetta short ribs swine fatback spare ribs frankfurter pastrami ham hock pork. Porchetta kielbasa corned beef pastrami shankle flank pancetta pork chop andouille tenderloin meatball sausage biltong jowl short ribs. Short ribs shank doner bacon corned beef, jowl prosciutto chicken frankfurter ham hock turkey hamburger pork loin pancetta boudin. leberkas corned beef. Tongue pastrami turducken shank filet mignon.</blockquote>
             <p style="clear:both">
-                @foreach (var item in Model.Credits.Cast.Take(15))
+                @foreach (var item in Model.Credits.Cast.Take(25))
                 {
-                    @item.Name <b>@item.Character</b>
+                    @Html.ActionLink(item.Name, "CastMovies", "Movie", new { id = item.Id }, null)
                 }
             </p>
         </div>

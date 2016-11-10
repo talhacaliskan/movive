@@ -35,4 +35,12 @@ namespace Moovoo.Controllers
             var movieNoDuplicate = movie.GroupBy(p => p.Id).Select(p => p.FirstOrDefault()).OrderBy(p => p.Id).ToList();
             return View(movieNoDuplicate);
         }
-    } }
+
+        [HttpGet]
+        public ActionResult CastMovies(int id)
+        {
+            var a = _client.GetPersonMovieCredits(id).Cast;
+            return View(a);
+        }
+    }
+}

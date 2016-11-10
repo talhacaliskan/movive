@@ -382,6 +382,7 @@
     <Content Include="Views\Shared\_MovieLayout.cshtml" />
     <Content Include="Views\Shared\_BlankLayout.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Movie\CastMovies.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
